@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using MicroserviceB.Service.Services;
 using MicroserviceB.Messaging.Receive.Receiver;
 using Microsoft.Extensions.Configuration;
-using MicroserviceB.Config;
 using MicroserviceB.Messaging.Receive.Options;
 using MediatR;
 using System.Reflection;
@@ -40,8 +39,8 @@ namespace MicroserviceB
 
         })
             .ConfigureServices((_, services) =>
-                     services.AddHostedService<DisplayNameReceiver>()
-                             .AddTransient<IDisplayNameService, DisplayNameService>()
+                     services.AddHostedService<DisplayNameConsumer>()
+                             .AddScoped<IDisplayNameService, DisplayNameService>()
                              .Configure<RabbitMqOptions>(ConfigSection)         
                              .AddMediatR(Assembly.GetExecutingAssembly(), typeof(IDisplayNameService).Assembly)
                              .AddOptions());

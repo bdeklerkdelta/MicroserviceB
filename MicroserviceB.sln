@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceB", "MicroserviceB\MicroserviceB.csproj", "{F981D2F2-1FE8-4048-9AE1-53F19455A1E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceB.Service", "MicroserviceB.Service\MicroserviceB.Service.csproj", "{7DB0A31C-D14F-4574-BFC7-1D5BAFA37A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceB.Service", "MicroserviceB.Service\MicroserviceB.Service.csproj", "{7DB0A31C-D14F-4574-BFC7-1D5BAFA37A5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceB.Messaging.Receive", "MicroserviceB.Messaging.Receive\MicroserviceB.Messaging.Receive.csproj", "{FD1DE045-75EB-496D-90AD-171ADE8330C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceB.Messaging.Receive", "MicroserviceB.Messaging.Receive\MicroserviceB.Messaging.Receive.csproj", "{FD1DE045-75EB-496D-90AD-171ADE8330C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceB.Service.Tests", "MicroserviceB.Service.Tests\MicroserviceB.Service.Tests.csproj", "{F6ED02E6-62DB-4256-B662-B4765004D7AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FD1DE045-75EB-496D-90AD-171ADE8330C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD1DE045-75EB-496D-90AD-171ADE8330C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD1DE045-75EB-496D-90AD-171ADE8330C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6ED02E6-62DB-4256-B662-B4765004D7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6ED02E6-62DB-4256-B662-B4765004D7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6ED02E6-62DB-4256-B662-B4765004D7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6ED02E6-62DB-4256-B662-B4765004D7AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

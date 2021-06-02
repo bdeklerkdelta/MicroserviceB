@@ -12,7 +12,19 @@ namespace MicroserviceB.Service.Commands
     {
         public async Task<Unit> Handle(DisplayNameCommand request, CancellationToken cancellationToken)
         {
-            Console.WriteLine(string.Format("Hello {0}, I am your father!", request.Name));
+            var validator = new DisplayNameCommandValidator();
+            var result = validator.Validate(request);
+            if (result.IsValid)
+            {
+                Console.WriteLine(string.Format("Hello {0}, I am your father!", request.Name));
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
 
             return Unit.Value;
         }

@@ -15,18 +15,22 @@ using MicroserviceB.Service.Models;
 
 namespace MicroserviceB.Messaging.Receive.Receiver
 {
-    public class DisplayNameReceiver : BackgroundService
+    public class DisplayNameConsumer : BackgroundService
     {
         private IModel _channel;
         private IConnection _connection;
         private readonly IDisplayNameService _displayNameService;
         private readonly string _hostname;
         private readonly string _queueName;
+        private readonly string _exchangeName;
+        private readonly string _routingKey;
 
-        public DisplayNameReceiver(IDisplayNameService displayNameService, IOptions<RabbitMqOptions> rabbitMqOptions)
+        public DisplayNameConsumer(IDisplayNameService displayNameService, IOptions<RabbitMqOptions> rabbitMqOptions)
         {
             _hostname = rabbitMqOptions.Value.Hostname;
             _queueName = rabbitMqOptions.Value.QueueName;
+            _exchangeName = rabbitMqOptions.Value.ExchangeName;
+            _routingKey = rabbitMqOptions.Value.RoutingKey;
             _displayNameService = displayNameService;
             InitializeRabbitMq();
         }
@@ -40,7 +44,9 @@ namespace MicroserviceB.Messaging.Receive.Receiver
 
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
+            _channel.ExchangeDeclare(_exchangeName, ExchangeType.Direct);
             _channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(_queueName, _exchangeName, _routingKey, null);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
